@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
+import React , {useState, useEffect} from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import './App.css';
 
 function App() {
+  const [isDarkModeOn, setIsDarkModeOn] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h1>Where in the world?</h1>
+        <button>Dark Mode</button>
       </header>
+      <main>
+        <Router>
+          <Switch>
+            <Route path="/:name"><Detail /></Route>
+            <Route path="/"><Home /></Route>
+          </Switch>
+        </Router>
+
+      </main>
+      <footer>
+        <h2>Set link to source and link to FEMentor site</h2>
+      </footer>
     </div>
   );
+}
+
+function Detail() {
+  let { name } = useParams();
+
+  return (
+    <div>TODO DETAIL</div>
+  )
+}
+
+function Home() {
+  return (
+    <div>TODO HOME
+      <div>
+        <Link to="/test">Detail link</Link>
+      </div>
+    </div>
+  )
 }
 
 export default App;
