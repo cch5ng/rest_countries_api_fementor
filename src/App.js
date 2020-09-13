@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  useParams
 } from "react-router-dom";
 import './App.css';
 
@@ -36,7 +37,7 @@ function Detail() {
   let { name } = useParams();
 
   return (
-    <div>TODO DETAIL</div>
+    <div>TODO DETAIL ({name})</div>
   )
 }
 
