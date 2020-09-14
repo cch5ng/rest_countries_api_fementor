@@ -14,8 +14,10 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Where in the world?</h1>
-        <button>Dark Mode</button>
+        <div className="row">
+          <h1>Where in the world?</h1>
+          <button>Dark Mode</button>
+        </div>
       </header>
       <main>
         <Router>
