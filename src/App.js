@@ -9,6 +9,7 @@ import {
 import './App.css';
 import CountryDetail from './components/CountryDetail';
 import Home from './components/Home';
+import Header from './components/Header';
 
 function App() {
   const [isDarkModeOn, setIsDarkModeOn] = useState(false);
@@ -18,12 +19,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <header>
-          <div className="row">
-            <Link to="/"><h1>Where in the world?</h1></Link>
-            <button>Dark Mode</button>
-          </div>
-        </header>
+        <Header />
         <main>
             <Switch>
               <Route path="/:name"><CountryDetail /></Route>
