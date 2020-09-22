@@ -7,6 +7,8 @@ import {
   useParams
 } from "react-router-dom";
 import './App.css';
+import CountryDetail from './components/CountryDetail';
+import Home from './components/Home';
 
 function App() {
   const [isDarkModeOn, setIsDarkModeOn] = useState(false);
@@ -24,7 +26,7 @@ function App() {
         </header>
         <main>
             <Switch>
-              <Route path="/:name"><Detail /></Route>
+              <Route path="/:name"><CountryDetail /></Route>
               <Route path="/"><Home /></Route>
             </Switch>
         </main>
@@ -34,23 +36,6 @@ function App() {
       </footer>
     </div>
   );
-}
-
-function Detail() {
-  let { name } = useParams();
-  return (
-    <div>TODO DETAIL ({name})</div>
-  )
-}
-
-function Home() {
-  return (
-    <div>TODO HOME
-      <div>
-        <Link to="/test">Detail link</Link>
-      </div>
-    </div>
-  )
 }
 
 export default App;
