@@ -6,13 +6,16 @@ import {
   Link,
   useParams
 } from "react-router-dom";
+import InputSearch from './InputSearch';
 
-const Home = () => {
+const Home = (props) => {
+  const {countrySearchText, searchInputChangeHandler} = props;
+
   return (
-    <div>TODO HOME
-      <div>
-        <Link to="/test">Detail link</Link>
-      </div>
+    <div>
+      <h1>TODO HOME</h1>
+      <InputSearch inputValue={countrySearchText} placeholder="Search for a country..."
+        onChangeHandler={value => searchInputChangeHandler(value)}/>
     </div>
   )
 }

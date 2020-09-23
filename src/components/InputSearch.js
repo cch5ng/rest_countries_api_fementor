@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 const InputSearch = (props) => {
-  const {placeholder, label, onChangeHandler} = props;
+  const {placeholder, label, onChangeHandler, inputValue} = props;
   return (
     <div>
       <input type="text" onChange={ev => onChangeHandler(ev.target.value)} 
