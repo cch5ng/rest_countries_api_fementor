@@ -15,6 +15,7 @@ function App() {
   const [isDarkModeOn, setIsDarkModeOn] = useState(false);
   const [countrySearchText, setCountrySearchText] = useState('');
   const [selectedFilterRegion, setSelectedFilterRegion] = useState('');
+  const [countries, setCountries] = useState([]);
 
   const styleButtonClickHandler = (ev) => {
     console.log('ev', ev)
@@ -30,8 +31,23 @@ function App() {
   }
 
   const filterSelectHandler = (ev) => {
-    console.log('ev.target.id', ev.target.id);
+    const {id} = ev.target;
+    setSelectedFilterRegion(id);
   }
+
+  useEffect(() => {
+    let url = selectedFilterRegion.length ? `https://restcountries.eu/rest/v2/region/${selectedFilterRegion}` : `https://restcountries.eu/rest/v2/all`;
+
+    fetch(url)
+      .then(resp => resp.json())
+      .then(json => {
+        if (json.length) {
+          setCountries(json);
+        }
+      })
+      .catch(err => console.error('error', err))
+
+  }, [selectedFilterRegion])
 
   return (
     <div className="App">
@@ -42,7 +58,8 @@ function App() {
               <Route path="/:name"><CountryDetail buttonClickHandler={ev => navButtonClickHandler(ev)} /></Route>
               <Route path="/"><Home countrySearchText={countrySearchText} 
                 searchInputChangeHandler={value => searchInputChangeHandler(value)}
-                filterSelectHandler={ev => filterSelectHandler(ev)}/></Route>
+                filterSelectHandler={ev => filterSelectHandler(ev)}
+                countries={countries} /></Route>
             </Switch>
         </main>
       </Router>
