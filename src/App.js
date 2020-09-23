@@ -16,14 +16,26 @@ function App() {
   const [countrySearchText, setCountrySearchText] = useState('');
   const [selectedFilterRegion, setSelectedFilterRegion] = useState('');
 
+  const styleButtonClickHandler = (ev) => {
+    console.log('ev', ev)
+  }
+
+  const navButtonClickHandler = (ev) => {
+    console.log('ev', ev)
+  }
+
+  const searchInputChangeHandler = (value) => {
+    setCountrySearchText(value);
+  }
+
   return (
     <div className="App">
       <Router>
-        <Header />
+        <Header buttonClickHandler={ev => styleButtonClickHandler(ev)}/>
         <main>
             <Switch>
-              <Route path="/:name"><CountryDetail /></Route>
-              <Route path="/"><Home /></Route>
+              <Route path="/:name"><CountryDetail buttonClickHandler={ev => navButtonClickHandler(ev)} /></Route>
+              <Route path="/"><Home countrySearchText={countrySearchText} /></Route>
             </Switch>
         </main>
       </Router>
