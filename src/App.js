@@ -29,6 +29,10 @@ function App() {
     setCountrySearchText(value);
   }
 
+  const filterSelectHandler = (ev) => {
+    console.log('ev.target.id', ev.target.id);
+  }
+
   return (
     <div className="App">
       <Router>
@@ -37,7 +41,8 @@ function App() {
             <Switch>
               <Route path="/:name"><CountryDetail buttonClickHandler={ev => navButtonClickHandler(ev)} /></Route>
               <Route path="/"><Home countrySearchText={countrySearchText} 
-                searchInputChangeHandler={value => searchInputChangeHandler(value)}/></Route>
+                searchInputChangeHandler={value => searchInputChangeHandler(value)}
+                filterSelectHandler={ev => filterSelectHandler(ev)}/></Route>
             </Switch>
         </main>
       </Router>
