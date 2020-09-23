@@ -25,6 +25,7 @@ function App() {
   }
 
   const searchInputChangeHandler = (value) => {
+    console.log('value', value)
     setCountrySearchText(value);
   }
 
@@ -35,7 +36,8 @@ function App() {
         <main>
             <Switch>
               <Route path="/:name"><CountryDetail buttonClickHandler={ev => navButtonClickHandler(ev)} /></Route>
-              <Route path="/"><Home countrySearchText={countrySearchText} /></Route>
+              <Route path="/"><Home countrySearchText={countrySearchText} 
+                searchInputChangeHandler={value => searchInputChangeHandler(value)}/></Route>
             </Switch>
         </main>
       </Router>
