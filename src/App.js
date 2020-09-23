@@ -7,25 +7,37 @@ import {
   useParams
 } from "react-router-dom";
 import './App.css';
+import CountryDetail from './components/CountryDetail';
+import Home from './components/Home';
+import Header from './components/Header';
 
 function App() {
   const [isDarkModeOn, setIsDarkModeOn] = useState(false);
   const [countrySearchText, setCountrySearchText] = useState('');
   const [selectedFilterRegion, setSelectedFilterRegion] = useState('');
 
+  const styleButtonClickHandler = (ev) => {
+    console.log('ev', ev)
+  }
+
+  const navButtonClickHandler = (ev) => {
+    console.log('ev', ev)
+  }
+
+  const searchInputChangeHandler = (value) => {
+    console.log('value', value)
+    setCountrySearchText(value);
+  }
+
   return (
     <div className="App">
       <Router>
-        <header>
-          <div className="row">
-            <Link to="/"><h1>Where in the world?</h1></Link>
-            <button>Dark Mode</button>
-          </div>
-        </header>
+        <Header buttonClickHandler={ev => styleButtonClickHandler(ev)}/>
         <main>
             <Switch>
-              <Route path="/:name"><Detail /></Route>
-              <Route path="/"><Home /></Route>
+              <Route path="/:name"><CountryDetail buttonClickHandler={ev => navButtonClickHandler(ev)} /></Route>
+              <Route path="/"><Home countrySearchText={countrySearchText} 
+                searchInputChangeHandler={value => searchInputChangeHandler(value)}/></Route>
             </Switch>
         </main>
       </Router>
@@ -34,23 +46,6 @@ function App() {
       </footer>
     </div>
   );
-}
-
-function Detail() {
-  let { name } = useParams();
-  return (
-    <div>TODO DETAIL ({name})</div>
-  )
-}
-
-function Home() {
-  return (
-    <div>TODO HOME
-      <div>
-        <Link to="/test">Detail link</Link>
-      </div>
-    </div>
-  )
 }
 
 export default App;
