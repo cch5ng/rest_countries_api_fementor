@@ -20,11 +20,11 @@ const FilterControl = (props) => {
     <div>
       <div id="list_default" onClick={toggleListExpanded}>Filter by Region</div>
       <div id="" onClick={handleListSelection}>None</div>
-      <div id="africa" onClick={handleListSelection}>Africa</div>
-      <div id="americas" onClick={handleListSelection}>Americas</div>
-      <div id="asia" onClick={handleListSelection}>Asia</div>
-      <div id="europe" onClick={handleListSelection}>Europe</div>
-      <div id="oceania" onClick={handleListSelection}>Oceania</div>
+      <div id="Africa" onClick={handleListSelection}>Africa</div>
+      <div id="Americas" onClick={handleListSelection}>Americas</div>
+      <div id="Asia" onClick={handleListSelection}>Asia</div>
+      <div id="Europe" onClick={handleListSelection}>Europe</div>
+      <div id="Oceania" onClick={handleListSelection}>Oceania</div>
     </div>
   )
 }
