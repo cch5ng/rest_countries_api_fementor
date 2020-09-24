@@ -55,7 +55,7 @@ function App() {
         <Header buttonClickHandler={ev => styleButtonClickHandler(ev)}/>
         <main>
             <Switch>
-              <Route path="/:name"><CountryDetail buttonClickHandler={ev => navButtonClickHandler(ev)} /></Route>
+              <Route path="/:name"><CountryDetail buttonClickHandler={ev => navButtonClickHandler(ev)} countries={countries} /></Route>
               <Route path="/"><Home countrySearchText={countrySearchText} 
                 searchInputChangeHandler={value => searchInputChangeHandler(value)}
                 filterSelectHandler={ev => filterSelectHandler(ev)}
