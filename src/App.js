@@ -18,7 +18,7 @@ function App() {
   const [countries, setCountries] = useState([]);
 
   const styleButtonClickHandler = (ev) => {
-    console.log('ev', ev)
+    setIsDarkModeOn(!isDarkModeOn);
   }
 
   const navButtonClickHandler = (ev) => {
@@ -52,14 +52,17 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Header buttonClickHandler={ev => styleButtonClickHandler(ev)}/>
+        <Header buttonClickHandler={ev => styleButtonClickHandler(ev)}
+          darkMode={isDarkModeOn} />
         <main>
             <Switch>
-              <Route path="/:name"><CountryDetail buttonClickHandler={ev => navButtonClickHandler(ev)} countries={countries} /></Route>
+              <Route path="/:name"><CountryDetail darkMode={isDarkModeOn}
+                buttonClickHandler={ev => navButtonClickHandler(ev)} 
+                countries={countries} /></Route>
               <Route path="/"><Home countrySearchText={countrySearchText} 
                 searchInputChangeHandler={value => searchInputChangeHandler(value)}
                 filterSelectHandler={ev => filterSelectHandler(ev)}
-                countries={countries} /></Route>
+                countries={countries} darkMode={isDarkModeOn} /></Route>
             </Switch>
         </main>
       </Router>
