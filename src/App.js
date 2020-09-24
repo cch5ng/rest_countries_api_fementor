@@ -18,15 +18,10 @@ function App() {
   const [countries, setCountries] = useState([]);
 
   const styleButtonClickHandler = (ev) => {
-    console.log('ev', ev)
-  }
-
-  const navButtonClickHandler = (ev) => {
-    console.log('ev', ev)
+    setIsDarkModeOn(!isDarkModeOn);
   }
 
   const searchInputChangeHandler = (value) => {
-    console.log('value', value)
     setCountrySearchText(value);
   }
 
@@ -35,9 +30,25 @@ function App() {
     setSelectedFilterRegion(id);
   }
 
-  useEffect(() => {
-    let url = selectedFilterRegion.length ? `https://restcountries.eu/rest/v2/region/${selectedFilterRegion}` : `https://restcountries.eu/rest/v2/all`;
+  const getFilteredCountries = () => {
+    let filteredCountries = countries.slice(0);
+    if (selectedFilterRegion.length) {
+      filteredCountries = filteredCountries.filter(country =>
+        country.region === selectedFilterRegion
+      )
+    }
+    if (countrySearchText.length) {
+      filteredCountries = filteredCountries.filter(country => {
+        let name = country.name.toLowerCase();
+        let searchStr = countrySearchText.toLowerCase();
+        return name.indexOf(searchStr) > -1;
+      })
+    }
+    return filteredCountries;
+  }
 
+  useEffect(() => {
+    let url = `https://restcountries.eu/rest/v2/all`;
     fetch(url)
       .then(resp => resp.json())
       .then(json => {
@@ -47,19 +58,21 @@ function App() {
       })
       .catch(err => console.error('error', err))
 
-  }, [selectedFilterRegion])
+  }, [])
 
   return (
     <div className="App">
       <Router>
-        <Header buttonClickHandler={ev => styleButtonClickHandler(ev)}/>
+        <Header buttonClickHandler={ev => styleButtonClickHandler(ev)}
+          darkMode={isDarkModeOn} />
         <main>
             <Switch>
-              <Route path="/:name"><CountryDetail buttonClickHandler={ev => navButtonClickHandler(ev)} countries={countries} /></Route>
+              <Route path="/:name"><CountryDetail darkMode={isDarkModeOn}
+                countries={countries} /></Route>
               <Route path="/"><Home countrySearchText={countrySearchText} 
                 searchInputChangeHandler={value => searchInputChangeHandler(value)}
                 filterSelectHandler={ev => filterSelectHandler(ev)}
-                countries={countries} /></Route>
+                countries={getFilteredCountries()} darkMode={isDarkModeOn} /></Route>
             </Switch>
         </main>
       </Router>

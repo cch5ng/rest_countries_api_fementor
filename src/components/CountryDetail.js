@@ -1,11 +1,21 @@
 import React, {useState, useEffect} from 'react';
-import {useParams} from "react-router-dom";
+import {useParams, useHistory} from "react-router-dom";
 import Button from './Button';
 
 const CountryDetail = (props) => {
   let { name } = useParams();
-  const {countries} = props;
+  const {countries, darkMode} = props;
   const [borderCountries, setBorderCountries] = useState([]);
+  let history = useHistory();
+
+  const handleBackButtonClick = (ev) => {
+    history.goBack();
+  }
+
+  const handleCountryNavButtonClick = (ev) => {
+    const name = ev.target.innerText;
+    history.push(`/${name}`);
+  }
 
   const getPrettyString = (objAr) => {
     if (objAr && objAr.length) {
@@ -56,6 +66,8 @@ const CountryDetail = (props) => {
 
   return (
     <div>
+      <Button label="Back"  id="btn_back" 
+        buttonClickHandler={ev => handleBackButtonClick(ev)} />
       <div><img alt="flag" src={country.flag} /></div>
       <div>{name}</div>
       <div>
@@ -76,7 +88,8 @@ const CountryDetail = (props) => {
         <div>Border Countries: </div>
         <div>
           {borderCountries.map(country => (
-            <Button label={country.name} id={country.name} key={country.name} />
+            <Button label={country.name} id={country.name} key={country.name} 
+              buttonClickHandler={ev => handleCountryNavButtonClick(ev)} />
           ))}
         </div>
       </div>

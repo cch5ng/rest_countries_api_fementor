@@ -5,18 +5,18 @@ import CountryCard from './CountryCard';
 
 const Home = (props) => {
   const {filterSelectHandler, countrySearchText, searchInputChangeHandler,
-    countries} = props;
+    countries, darkMode} = props;
 
   return (
     <div>
-      <h1>TODO HOME</h1>
       <InputSearch inputValue={countrySearchText} placeholder="Search for a country..."
-        onChangeHandler={value => searchInputChangeHandler(value)}/>
+        onChangeHandler={value => searchInputChangeHandler(value)} darkMode={darkMode} />
 
-      <FilterControl filterSelectHandler={ev => filterSelectHandler(ev)} />
+      <FilterControl filterSelectHandler={ev => filterSelectHandler(ev)} 
+        darkMode={darkMode}/>
 
       {countries.map(country => (
-        <CountryCard country={country} key={country.name}/>
+        <CountryCard country={country} key={country.name} darkMode={darkMode} />
       ))}
     </div>
   )
