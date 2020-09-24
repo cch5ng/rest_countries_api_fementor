@@ -36,7 +36,6 @@ const CountryDetail = (props) => {
   }
 
   let countriesDict = getCountriesDict(countries);
-  console.log('countriesDict', countriesDict)
   let country = getCurrentCountry(countriesDict, name);
 
   useEffect(() => {
@@ -67,7 +66,6 @@ const CountryDetail = (props) => {
           <div>Sub Region: {country.subregion}</div>
           <div>Capital: {country.capital}</div>
         </div>
-
         <div>
           <div>Top Level Domain: {country.topLevelDomain}</div>
           <div>Currencies: {getPrettyString(country.currencies)}</div>
@@ -75,10 +73,13 @@ const CountryDetail = (props) => {
         </div>
       </div>
       <div>
-        Border Countries: {country.borders}
+        <div>Border Countries: </div>
+        <div>
+          {borderCountries.map(country => (
+            <Button label={country.name} id={country.name} key={country.name} />
+          ))}
+        </div>
       </div>
-
-    
     </div>
   )
 }
