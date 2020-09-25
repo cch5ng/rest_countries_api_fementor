@@ -1,0 +1,15 @@
+@import '../global.module.scss';
+
+header {
+  height: 150px;
+  padding: 0 30px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.6em;
+  font-weight: bold;
+}
