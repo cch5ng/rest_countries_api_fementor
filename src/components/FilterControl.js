@@ -6,15 +6,24 @@ import { IoIosArrowDown } from "react-icons/io";
 let cx = classNames.bind(styles);
 
 const FilterControl = (props) => {
-  const {filterSelectHandler, optionsList, curRegion} = props;
+  const {filterSelectHandler, optionsList, curRegion, darkMode} = props;
   const [isListExpanded, setIsListExpanded] = useState(false);
+
+  let filterControlContainerClassName = cx({
+    filter_control_container: true,
+    light_background_primary: !darkMode,
+    light_typography_primary: !darkMode,
+    dark_background_primary: darkMode,
+    dark_typography_primary: darkMode
+  });
 
   let listClassName = cx({
     hidden: !isListExpanded,
     show: isListExpanded,
-    filter_list_container: true
+    filter_list_container: true,
+    light_background_primary: !darkMode,
+    dark_background_primary: darkMode,
   });
-
 
   const toggleListExpanded = (ev) => {
     setIsListExpanded(!isListExpanded);

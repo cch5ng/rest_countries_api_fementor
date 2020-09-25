@@ -1,3 +1,5 @@
+@import './global.module.scss';
+
 /* global */
 
 .row {
@@ -8,14 +10,7 @@
 }
 
 /* section-specific */
-header {
-
-}
 
 main {
-
-}
-
-footer {
-
+  padding: 30px;
 }

@@ -3,8 +3,8 @@
 .filter_control_container {
   position: absolute;
   z-index: 15;
-  top: 110px;
-  background-color: #fff;
+  top: $filter_top;
+  //background-color: #fff;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;

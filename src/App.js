@@ -6,16 +6,27 @@ import {
   Link,
   useParams
 } from "react-router-dom";
-import './App.css';
+import classNames from 'classnames/bind';
+import styles from './App.module.scss';
 import CountryDetail from './components/CountryDetail';
 import Home from './components/Home';
 import Header from './components/Header';
+
+let cx = classNames.bind(styles);
 
 function App() {
   const [isDarkModeOn, setIsDarkModeOn] = useState(false);
   const [countrySearchText, setCountrySearchText] = useState('');
   const [selectedFilterRegion, setSelectedFilterRegion] = useState('');
   const [countries, setCountries] = useState([]);
+
+  let mainClassName = cx({
+    light_background_secondary: !isDarkModeOn,
+    light_typography_primary: !isDarkModeOn,
+    dark_background_secondary: isDarkModeOn,
+    dark_typography_primary: isDarkModeOn,
+  });
+
 
   const styleButtonClickHandler = (ev) => {
     setIsDarkModeOn(!isDarkModeOn);
@@ -61,11 +72,11 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       <Router>
         <Header buttonClickHandler={ev => styleButtonClickHandler(ev)}
           darkMode={isDarkModeOn} />
-        <main>
+        <main className={mainClassName}>
             <Switch>
               <Route path="/:name"><CountryDetail darkMode={isDarkModeOn}
                 countries={countries} /></Route>
