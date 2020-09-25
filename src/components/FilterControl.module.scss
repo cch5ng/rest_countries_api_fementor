@@ -1,0 +1,42 @@
+@import '../global.module.scss';
+
+.filter_control_container {
+  position: absolute;
+  z-index: 15;
+  top: 110px;
+  background-color: #fff;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: static;
+}
+
+.list_default_container {
+  display: flex;
+  flex-flow: row nowrap;
+  height: 45px;
+  width: 185px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  // border: 1px solid #ccc;
+}
+
+.filter_list_container {
+  width: 185px;
+  margin-top: 5px;
+  // border: 1px solid #ccc;
+  padding: 12px 0 12px 10px;
+}
+
+.filter_list_item {
+  padding: 5px 0 0 0;
+}

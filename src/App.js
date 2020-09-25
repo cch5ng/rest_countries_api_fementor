@@ -72,7 +72,8 @@ function App() {
               <Route path="/"><Home countrySearchText={countrySearchText} 
                 searchInputChangeHandler={value => searchInputChangeHandler(value)}
                 filterSelectHandler={ev => filterSelectHandler(ev)}
-                countries={getFilteredCountries()} darkMode={isDarkModeOn} /></Route>
+                countries={getFilteredCountries()} darkMode={isDarkModeOn} 
+                curRegion={selectedFilterRegion} /></Route>
             </Switch>
         </main>
       </Router>
