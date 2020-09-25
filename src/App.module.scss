@@ -1,0 +1,16 @@
+@import './global.module.scss';
+
+/* global */
+
+.row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* section-specific */
+
+main {
+  padding: 30px;
+}
