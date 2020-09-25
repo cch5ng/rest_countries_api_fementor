@@ -15,7 +15,6 @@ const FilterControl = (props) => {
     filter_list_container: true
   });
 
-
   const toggleListExpanded = (ev) => {
     setIsListExpanded(!isListExpanded);
   }
