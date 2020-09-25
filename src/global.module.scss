@@ -1,3 +1,49 @@
+/* global colors */
+
+/* colors light */
+$color_primary_background_light: #fff;
+$color_secondary_background_light: #e8e8e8;
+$color_primary_typography_light: #000;
+$color_secondary_typography_light: #e8e8e8;
+
+/* colors dark */
+$color_primary_background_dark: #323138;
+$color_secondary_background_dark: #323138;
+$color_primary_typography_dark: #fff;
+$color_secondary_typography_dark: #fff;
+
+/* global typography */
+
+/* global spacing */
+
+/* global link */
+
+
 * {
   box-sizing: border-box;
 }
+
+.light_background_primary {
+  background-color: $color_primary_background_light;
+}
+
+.light_background_secondary {
+  background-color: $color_secondary_background_light;
+}
+
+.light_typography_primary {
+  color: $color_primary_typography_light;
+}
+
+.dark_background_primary {
+  background-color: $color_primary_background_dark;
+}
+
+.dark_background_secondary {
+  background-color: $color_secondary_background_dark;
+}
+
+.dark_typography_primary {
+  color: $color_primary_typography_dark;
+}
+
