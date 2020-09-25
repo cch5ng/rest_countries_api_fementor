@@ -1,0 +1,15 @@
+
+.filter_control_container {
+  position: absolute;
+  z-index: 15;
+  top: 110px;
+  background-color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: static;
+}
