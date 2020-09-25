@@ -7,6 +7,7 @@ import {
   useParams
 } from "react-router-dom";
 import classNames from 'classnames/bind';
+import {HiOutlineMoon} from "react-icons/hi";
 import Button from './Button';
 import styles from './Header.module.scss';
 
@@ -22,15 +23,38 @@ const Header = (props) => {
     dark_typography_primary: darkMode
   });
 
+  let linkClassName = cx({
+    light_link_typography: !darkMode,
+    dark_link_typography: darkMode,
+    title: true,
+    link: true
+  });
+
+  let styleBtnClassName = cx({
+    style_btn: true
+  });
+
+  let styleBtnTextClassName = cx({
+    style_btn_text: true
+  });
+
   return (
     <header className={headerClassName}>
       <div >
-        <Link to="/" className={styles.title}>Where in the world?</Link>
+        <Link to="/" className={linkClassName}>Where in the world?</Link>
       </div>
-      <Button label="Dark Mode" buttonClickHandler={ev => buttonClickHandler(ev)} 
-        buttonId="btn_style"/>
+      <div onClick={ev => buttonClickHandler(ev)} id="btn_style" className={styleBtnClassName}>
+        <HiOutlineMoon /> 
+        <div className={styleBtnTextClassName}>Dark Mode</div>
+      </div>
+      
     </header>
   )
 }
 
 export default Header;
+
+/*
+<Button label="Dark Mode" buttonClickHandler={ev => buttonClickHandler(ev)} 
+        buttonId="btn_style"/>
+*/
