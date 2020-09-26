@@ -9,6 +9,11 @@ header {
   align-items: center;
 }
 
+.title {
+  font-size: $title_font_size_mobile;
+  font-weight: bold;
+}
+
 .style_btn {
   display: flex;
   flex-flow: row nowrap;

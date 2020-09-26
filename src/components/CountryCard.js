@@ -17,8 +17,7 @@ const CountryCard = (props) => {
   });
 
   let paraClassName = cx({
-    // light_link_typography: !darkMode,
-    // dark_link_typography: darkMode
+    detailParagraph: true
   })
 
   let cardDetailContainerClassName = cx({
@@ -33,7 +32,7 @@ const CountryCard = (props) => {
   return (
     <div className={styles.country_card_container}>
       <Link to={url} className={linkClassName}>
-        <div><img alt="country flag" src={flag} /></div>
+        <div className={styles.img}><img alt="country flag" src={flag} /></div>
         <div className={cardDetailContainerClassName}>
           <div className={styles.title}>{name}</div>
           <div className={styles.detail_text}>
