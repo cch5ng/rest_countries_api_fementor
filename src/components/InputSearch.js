@@ -15,7 +15,7 @@ const InputSearch = (props) => {
   });
 
   return (
-    <div>
+    <div className={styles.input_container}>
       <input type="text" onChange={ev => onChangeHandler(ev.target.value)} 
         placeholder={placeholder} className={inputClassName} />
     </div>

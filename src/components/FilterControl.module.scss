@@ -4,7 +4,6 @@
   position: absolute;
   z-index: 15;
   top: $filter_top;
-  //background-color: #fff;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -40,4 +39,13 @@
 
 .filter_list_item {
   padding: 5px 0 0 0;
+}
+
+@media (min-width: 768px) {
+
+  .filter_control_container {
+    top: $filter_top_desktop;
+    left: calc(100vw - 185px - 75px);
+  }
+
 }

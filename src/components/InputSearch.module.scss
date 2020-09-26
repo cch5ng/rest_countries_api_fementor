@@ -8,3 +8,15 @@ input {
   border-radius: 6px;
   font-size: $control_typography_size;
 }
+
+@media (min-width: 768px) {
+  
+  input {
+    width: 45%; 
+  }
+
+  .input_container {
+    padding-left: 30px;
+  }
+
+}
