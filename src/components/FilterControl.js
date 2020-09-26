@@ -17,6 +17,14 @@ const FilterControl = (props) => {
     dark_typography_primary: darkMode
   });
 
+  let listDefaultClassName = cx({
+    list_default_container: true,
+    light_background_primary: !darkMode,
+    light_typography_primary: !darkMode,
+    dark_background_primary: darkMode,
+    dark_typography_primary: darkMode
+  })
+
   let listClassName = cx({
     hidden: !isListExpanded,
     show: isListExpanded,
@@ -36,7 +44,7 @@ const FilterControl = (props) => {
 
   return (
     <div className={styles.filter_control_container}>
-      <div id="list_default" className={styles.list_default_container} onClick={toggleListExpanded}>
+      <div id="list_default" className={listDefaultClassName} onClick={toggleListExpanded}>
         <div>{curRegion.length ? `Region: ${curRegion}`: 'Filter by Region'}</div>
         <IoIosArrowDown />
       </div>

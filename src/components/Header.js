@@ -40,7 +40,7 @@ const Header = (props) => {
 
   return (
     <header className={headerClassName}>
-      <div >
+      <div className={styles.title}>
         <Link to="/" className={linkClassName}>Where in the world?</Link>
       </div>
       <div onClick={ev => buttonClickHandler(ev)} id="btn_style" className={styleBtnClassName}>

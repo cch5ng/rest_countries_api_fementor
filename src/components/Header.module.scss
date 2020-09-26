@@ -2,7 +2,7 @@
 
 header {
   height: $header_height;
-  padding: 0 30px;
+  padding: 0 $horizontal_spacing_mobile;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
@@ -10,7 +10,7 @@ header {
 }
 
 .title {
-  font-size: 1.6em;
+  font-size: $title_font_size_mobile;
   font-weight: bold;
 }
 
@@ -24,4 +24,21 @@ header {
 
 .style_btn_text {
   margin-left: 10px;
+}
+
+@media (min-width: 768px) {
+
+  header {
+    padding: 0 $horizontal_spacing_desktop;
+    height: $header_height_desktop;
+  }
+
+  .title {
+    font-size: $title_font_size_tablet;
+  }
+
+  .style_btn {
+    font-size: 1.1rem;
+  }
+
 }

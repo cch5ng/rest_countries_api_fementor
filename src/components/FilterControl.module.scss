@@ -4,7 +4,6 @@
   position: absolute;
   z-index: 15;
   top: $filter_top;
-  //background-color: #fff;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -27,7 +26,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
-  // border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
 .filter_list_container {
@@ -35,8 +34,18 @@
   margin-top: 5px;
   // border: 1px solid #ccc;
   padding: 12px 0 12px 10px;
+  border-radius: 6px;
 }
 
 .filter_list_item {
   padding: 5px 0 0 0;
+}
+
+@media (min-width: 768px) {
+
+  .filter_control_container {
+    top: $filter_top_desktop;
+    left: calc(100vw - 185px - 75px);
+  }
+
 }

@@ -17,11 +17,11 @@ const CountryCard = (props) => {
   });
 
   let paraClassName = cx({
-    // light_link_typography: !darkMode,
-    // dark_link_typography: darkMode
+    detailParagraph: true
   })
 
   let cardDetailContainerClassName = cx({
+    card_detail_container: true,
     light_background_primary: !darkMode,
     light_typography_primary: !darkMode,
     dark_background_primary: darkMode,
@@ -30,15 +30,24 @@ const CountryCard = (props) => {
 
 
   return (
-    <div>
+    <div className={styles.country_card_container}>
       <Link to={url} className={linkClassName}>
-        <div><img alt="country flag" src={flag} /></div>
+        <div className={styles.img}><img alt="country flag" src={flag} /></div>
         <div className={cardDetailContainerClassName}>
-          <div>{name}</div>
-          <div>
-            <p className={paraClassName}>Population: {population}</p>
-            <p className={paraClassName}>Region: {region}</p>
-            <p className={paraClassName}>Capital: {capital}</p>
+          <div className={styles.title}>{name}</div>
+          <div className={styles.detail_text}>
+            <p className={paraClassName}>
+              <span className={styles.detail_heading}>Population:</span>
+              <span className={styles.detail_description}> {population}</span>
+            </p>
+            <p className={paraClassName}>
+              <span className={styles.detail_heading}>Region:</span>
+              <span className={styles.detail_description}> {region}</span>
+            </p>
+            <p className={paraClassName}>
+              <span className={styles.detail_heading}>Capital:</span>
+              <span className={styles.detail_description}> {capital}</span>
+            </p>
           </div>
         </div>
       </Link>
