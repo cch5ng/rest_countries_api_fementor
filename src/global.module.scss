@@ -8,7 +8,7 @@ $color_secondary_typography_light: #e8e8e8;
 $color_link_typography_light: #000;
 
 /* colors dark */
-$color_primary_background_dark: #323138;
+$color_primary_background_dark: #46454B;
 $color_secondary_background_dark: #323138;
 $color_primary_typography_dark: #fff;
 $color_secondary_typography_dark: #fff;
@@ -16,14 +16,20 @@ $color_link_typography_dark: #fff;
 
 /* global typography */
 
+$control_typography_size: 1.0rem;
+
 .title {
-  font-size: 1.6em;
+  font-size: 1.6rem;
   font-weight: bold;
+}
+
+.control_text {
+  font-size: 0.9rem;
 }
 
 /* global spacing */
 $header_height: 150px;
-$filter_top: 220px;
+$filter_top: 240px;
 
 /* global link */
 
