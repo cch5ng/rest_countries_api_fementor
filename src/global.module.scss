@@ -15,13 +15,11 @@ $color_secondary_typography_dark: #fff;
 $color_link_typography_dark: #fff;
 
 /* global typography */
+$title_font_size_mobile: 1.6rem;
+$title_font_size_tablet: 1.3rem;
+$title_font_size_desktop: 1.0rem;
 
 $control_typography_size: 1.0rem;
-
-.title {
-  font-size: 1.6rem;
-  font-weight: bold;
-}
 
 .control_text {
   font-size: 0.9rem;
