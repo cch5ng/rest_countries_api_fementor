@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from "react-router-dom";
 import classNames from 'classnames/bind';
+import LazyLoad from 'react-lazyload';
 import styles from './CountryCard.module.scss';
 
 let cx = classNames.bind(styles);
@@ -32,7 +33,11 @@ const CountryCard = (props) => {
   return (
     <div className={styles.country_card_container}>
       <Link to={url} className={linkClassName}>
-        <div className={styles.img}><img alt="country flag" src={flag} /></div>
+        <div className={styles.img}>
+          <LazyLoad offset={100} once>
+            <img alt="country flag" src={flag} />
+          </LazyLoad>
+        </div>
         <div className={cardDetailContainerClassName}>
           <div className={styles.title}>{name}</div>
           <div className={styles.detail_text}>
