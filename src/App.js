@@ -8,42 +8,23 @@ import {
 } from "react-router-dom";
 import classNames from 'classnames/bind';
 import styles from './App.module.scss';
-import CountryDetail from './components/CountryDetail';
-import Home from './components/Home';
 import Header from './components/Header';
+import Main from './components/Main';
+import Footer from './components/Footer';
+import {DarkModeProvider, useDarkMode} from './context/useDarkMode';
 
 let cx = classNames.bind(styles);
 
 function App() {
-  const [isDarkModeOn, setIsDarkModeOn] = useState(false);
+  //const [isDarkModeOn, setIsDarkModeOn] = useState(false);
   const [countrySearchText, setCountrySearchText] = useState('');
   const [selectedFilterRegion, setSelectedFilterRegion] = useState('');
   const [countries, setCountries] = useState([]);
+  const {isDarkModeOn} = useDarkMode();
 
-  let mainClassName = cx({
-    light_background_secondary: !isDarkModeOn,
-    light_typography_primary: !isDarkModeOn,
-    dark_background_secondary: isDarkModeOn,
-    dark_typography_primary: isDarkModeOn,
-  });
-
-  let footerClassName = cx({
-    footer: true,
-    light_background_primary: !isDarkModeOn,
-    light_typography_primary: !isDarkModeOn,
-    dark_background_primary: isDarkModeOn,
-    dark_typography_primary: isDarkModeOn,
-  });
-
-  let linkClassName = cx({
-    light_link_typography: !isDarkModeOn,
-    dark_link_typography: isDarkModeOn
-  })
-
-
-  const styleButtonClickHandler = (ev) => {
-    setIsDarkModeOn(!isDarkModeOn);
-  }
+  // const styleButtonClickHandler = (ev) => {
+  //   setIsDarkModeOn(!isDarkModeOn);
+  // }
 
   const searchInputChangeHandler = (value) => {
     setCountrySearchText(value);
@@ -84,27 +65,27 @@ function App() {
 
   }, [])
 
+/*
+buttonClickHandler={ev => styleButtonClickHandler(ev)}
+            darkMode={isDarkModeOn} 
+darkMode={isDarkModeOn}
+darkMode={isDarkModeOn} 
+            */
+
   return (
     <div className={styles.App}>
-      <Router>
-        <Header buttonClickHandler={ev => styleButtonClickHandler(ev)}
-          darkMode={isDarkModeOn} />
-        <main className={mainClassName}>
-          <Switch>
-            <Route path="/:name"><CountryDetail darkMode={isDarkModeOn}
-              countries={countries} /></Route>
-            <Route path="/"><Home countrySearchText={countrySearchText} 
-              searchInputChangeHandler={value => searchInputChangeHandler(value)}
-              filterSelectHandler={ev => filterSelectHandler(ev)}
-              countries={getFilteredCountries()} darkMode={isDarkModeOn} 
-              curRegion={selectedFilterRegion} /></Route>
-          </Switch>
-        </main>
-      </Router>
-      <footer className={footerClassName}>
-        <div>Requirements for this project came from <a href="https://www.frontendmentor.io/" target="_blank" rel="noopener noreferrer" className={linkClassName}>Frontend Mentor</a></div>
-        <div>The <a href="https://github.com/cch5ng/rest_countries_api_fementor" target="_blank" rel="noopener noreferrer" className={linkClassName}>source for this project is available here.</a></div>
-      </footer>
+      <DarkModeProvider>
+        <Router>
+          <Header/>
+          <Main countries={countries} countrySearchText={countrySearchText} 
+            searchInputChangeHandler={searchInputChangeHandler} 
+            filterSelectHandler={filterSelectHandler}
+            getFilteredCountries={getFilteredCountries} 
+            selectedFilterRegion={selectedFilterRegion}
+          />
+        </Router>
+        <Footer />
+      </DarkModeProvider>
     </div>
   );
 }
