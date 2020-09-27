@@ -24,22 +24,6 @@ input {
   z-index: 10;
 }
 
-.light_icon {
-  color: #666;
-}
-
-.dark_icon {
-  color: #fff;
-}
-
-.light_typography_placeholder::placeholder {
-  color: #666;
-}
-
-.dark_typography_placeholder::placeholder {
-  color: #fff;
-}
-
 @media (min-width: 768px) {
   
   input {
