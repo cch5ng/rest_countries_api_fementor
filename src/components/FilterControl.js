@@ -2,35 +2,37 @@ import React , {useState, useEffect} from 'react';
 import classNames from 'classnames/bind';
 import styles from './FilterControl.module.scss';
 import { IoIosArrowDown } from "react-icons/io";
+import {useDarkMode} from '../context/useDarkMode';
 
 let cx = classNames.bind(styles);
 
 const FilterControl = (props) => {
   const {filterSelectHandler, optionsList, curRegion, darkMode} = props;
   const [isListExpanded, setIsListExpanded] = useState(false);
+  const {isDarkModeOn} = useDarkMode();
 
   let filterControlContainerClassName = cx({
     filter_control_container: true,
-    light_background_primary: !darkMode,
-    light_typography_primary: !darkMode,
-    dark_background_primary: darkMode,
+    light_background_primary: !isDarkModeOn,
+    light_typography_primary: !isDarkModeOn,
+    dark_background_primary: isDarkModeOn,
     dark_typography_primary: darkMode
   });
 
   let listDefaultClassName = cx({
     list_default_container: true,
-    light_background_primary: !darkMode,
-    light_typography_primary: !darkMode,
-    dark_background_primary: darkMode,
-    dark_typography_primary: darkMode
+    light_background_primary: !isDarkModeOn,
+    light_typography_primary: !isDarkModeOn,
+    dark_background_primary: isDarkModeOn,
+    dark_typography_primary: isDarkModeOn
   })
 
   let listClassName = cx({
     hidden: !isListExpanded,
     show: isListExpanded,
     filter_list_container: true,
-    light_background_primary: !darkMode,
-    dark_background_primary: darkMode,
+    light_background_primary: !isDarkModeOn,
+    dark_background_primary: isDarkModeOn,
   });
 
   const toggleListExpanded = (ev) => {

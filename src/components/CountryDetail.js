@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import {useParams, useHistory} from "react-router-dom";
 import Button from './Button';
+import {useDarkMode} from '../context/useDarkMode';
 
 const CountryDetail = (props) => {
   let { name } = useParams();
   const {countries, darkMode} = props;
   const [borderCountries, setBorderCountries] = useState([]);
   let history = useHistory();
+  const {isDarkModeOn} = useDarkMode();
 
   const handleBackButtonClick = (ev) => {
     history.goBack();

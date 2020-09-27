@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import classNames from 'classnames/bind';
 import LazyLoad from 'react-lazyload';
 import styles from './CountryCard.module.scss';
+import {useDarkMode} from '../context/useDarkMode';
 
 let cx = classNames.bind(styles);
 
@@ -10,10 +11,11 @@ const CountryCard = (props) => {
   const {darkMode} = props;
   const {flag, name, population, region, capital} = props.country;
   let url = `/${name}`;
+  const {isDarkModeOn} = useDarkMode();
 
   let linkClassName = cx({
-    light_link_typography: !darkMode,
-    dark_link_typography: darkMode,
+    light_link_typography: !isDarkModeOn,
+    dark_link_typography: isDarkModeOn,
     link: true
   });
 
@@ -23,10 +25,10 @@ const CountryCard = (props) => {
 
   let cardDetailContainerClassName = cx({
     card_detail_container: true,
-    light_background_primary: !darkMode,
-    light_typography_primary: !darkMode,
-    dark_background_primary: darkMode,
-    dark_typography_primary: darkMode
+    light_background_primary: !isDarkModeOn,
+    light_typography_primary: !isDarkModeOn,
+    dark_background_primary: isDarkModeOn,
+    dark_typography_primary: isDarkModeOn
   })
 
 
