@@ -90,15 +90,15 @@ function App() {
         <Header buttonClickHandler={ev => styleButtonClickHandler(ev)}
           darkMode={isDarkModeOn} />
         <main className={mainClassName}>
-            <Switch>
-              <Route path="/:name"><CountryDetail darkMode={isDarkModeOn}
-                countries={countries} /></Route>
-              <Route path="/"><Home countrySearchText={countrySearchText} 
-                searchInputChangeHandler={value => searchInputChangeHandler(value)}
-                filterSelectHandler={ev => filterSelectHandler(ev)}
-                countries={getFilteredCountries()} darkMode={isDarkModeOn} 
-                curRegion={selectedFilterRegion} /></Route>
-            </Switch>
+          <Switch>
+            <Route path="/:name"><CountryDetail darkMode={isDarkModeOn}
+              countries={countries} /></Route>
+            <Route path="/"><Home countrySearchText={countrySearchText} 
+              searchInputChangeHandler={value => searchInputChangeHandler(value)}
+              filterSelectHandler={ev => filterSelectHandler(ev)}
+              countries={getFilteredCountries()} darkMode={isDarkModeOn} 
+              curRegion={selectedFilterRegion} /></Route>
+          </Switch>
         </main>
       </Router>
       <footer className={footerClassName}>
