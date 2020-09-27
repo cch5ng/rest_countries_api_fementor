@@ -27,6 +27,19 @@ function App() {
     dark_typography_primary: isDarkModeOn,
   });
 
+  let footerClassName = cx({
+    footer: true,
+    light_background_primary: !isDarkModeOn,
+    light_typography_primary: !isDarkModeOn,
+    dark_background_primary: isDarkModeOn,
+    dark_typography_primary: isDarkModeOn,
+  });
+
+  let linkClassName = cx({
+    light_link_typography: !isDarkModeOn,
+    dark_link_typography: isDarkModeOn
+  })
+
 
   const styleButtonClickHandler = (ev) => {
     setIsDarkModeOn(!isDarkModeOn);
@@ -88,8 +101,9 @@ function App() {
             </Switch>
         </main>
       </Router>
-      <footer>
-        <h2>FOOTER: Set link to source and link to FEMentor site</h2>
+      <footer className={footerClassName}>
+        <div>Requirements for this project came from <a href="https://www.frontendmentor.io/" target="_blank" rel="noopener noreferrer" className={linkClassName}>Frontend Mentor</a></div>
+        <div>The <a href="https://github.com/cch5ng/rest_countries_api_fementor" target="_blank" rel="noopener noreferrer" className={linkClassName}>source for this project is available here.</a></div>
       </footer>
     </div>
   );

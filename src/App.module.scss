@@ -11,6 +11,11 @@
 
 /* section-specific */
 
-main {
+main, footer {
   padding: 30px;
+}
+
+.footer {
+  text-align: center;
+  font-size: $title_font_size_desktop;
 }
