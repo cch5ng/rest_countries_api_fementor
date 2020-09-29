@@ -1,6 +1,6 @@
 import React from 'react';
 import {Router, useHistory} from 'react-router-dom';
-import { render } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import Header from './Header';
 
 test.skip('handles header button click', () => {
