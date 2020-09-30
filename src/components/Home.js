@@ -4,21 +4,25 @@ import FilterControl from './FilterControl';
 import CountryCard from './CountryCard';
 import styles from './Home.module.scss';
 
+//darkMode, 
+//darkMode={darkMode} 
+//darkMode={darkMode}
+
 const Home = (props) => {
   const {filterSelectHandler, countrySearchText, searchInputChangeHandler,
-    countries, darkMode, curRegion} = props;
+    countries, curRegion} = props;
 
   return (
     <div>
       <InputSearch inputValue={countrySearchText} placeholder="Search for a country..."
-        onChangeHandler={value => searchInputChangeHandler(value)} darkMode={darkMode} />
+        onChangeHandler={value => searchInputChangeHandler(value)} />
 
       <FilterControl filterSelectHandler={ev => filterSelectHandler(ev)} 
-        darkMode={darkMode} curRegion={curRegion} />
+        curRegion={curRegion} />
 
       <div className={styles.countries_list_container}>
         {countries.map(country => (
-          <CountryCard country={country} key={country.name} darkMode={darkMode} />
+          <CountryCard country={country} key={country.name} />
         ))}
       </div>
     </div>

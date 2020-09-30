@@ -8,29 +8,19 @@ import {
 } from "react-router-dom";
 import classNames from 'classnames/bind';
 import styles from './App.module.scss';
-import CountryDetail from './components/CountryDetail';
-import Home from './components/Home';
 import Header from './components/Header';
+import Main from './components/Main';
+import Footer from './components/Footer';
+import {DarkModeProvider, useDarkMode} from './context/useDarkMode';
 
 let cx = classNames.bind(styles);
 
 function App() {
-  const [isDarkModeOn, setIsDarkModeOn] = useState(false);
+  //const [isDarkModeOn, setIsDarkModeOn] = useState(false);
   const [countrySearchText, setCountrySearchText] = useState('');
   const [selectedFilterRegion, setSelectedFilterRegion] = useState('');
   const [countries, setCountries] = useState([]);
-
-  let mainClassName = cx({
-    light_background_secondary: !isDarkModeOn,
-    light_typography_primary: !isDarkModeOn,
-    dark_background_secondary: isDarkModeOn,
-    dark_typography_primary: isDarkModeOn,
-  });
-
-
-  const styleButtonClickHandler = (ev) => {
-    setIsDarkModeOn(!isDarkModeOn);
-  }
+  const {isDarkModeOn} = useDarkMode();
 
   const searchInputChangeHandler = (value) => {
     setCountrySearchText(value);
@@ -58,39 +48,35 @@ function App() {
     return filteredCountries;
   }
 
-  useEffect(() => {
+  const loadFromApi = async (mounted) => {
     let url = `https://restcountries.eu/rest/v2/all`;
-    fetch(url)
-      .then(resp => resp.json())
-      .then(json => {
-        if (json.length) {
-          setCountries(json);
-        }
-      })
-      .catch(err => console.error('error', err))
+    const response = await fetch(url)
+    if (response.ok) {
+      let json = await response.json();
+      setCountries(json);
+    } else {
+      console.error('countries request failed')
+    }
+  }
 
+  useEffect(() => {
+    loadFromApi();
   }, [])
 
   return (
     <div className={styles.App}>
-      <Router>
-        <Header buttonClickHandler={ev => styleButtonClickHandler(ev)}
-          darkMode={isDarkModeOn} />
-        <main className={mainClassName}>
-            <Switch>
-              <Route path="/:name"><CountryDetail darkMode={isDarkModeOn}
-                countries={countries} /></Route>
-              <Route path="/"><Home countrySearchText={countrySearchText} 
-                searchInputChangeHandler={value => searchInputChangeHandler(value)}
-                filterSelectHandler={ev => filterSelectHandler(ev)}
-                countries={getFilteredCountries()} darkMode={isDarkModeOn} 
-                curRegion={selectedFilterRegion} /></Route>
-            </Switch>
-        </main>
-      </Router>
-      <footer>
-        <h2>FOOTER: Set link to source and link to FEMentor site</h2>
-      </footer>
+      <DarkModeProvider>
+        <Router>
+          <Header/>
+          <Main countries={countries} countrySearchText={countrySearchText} 
+            searchInputChangeHandler={searchInputChangeHandler} 
+            filterSelectHandler={filterSelectHandler}
+            getFilteredCountries={getFilteredCountries} 
+            selectedFilterRegion={selectedFilterRegion}
+          />
+        </Router>
+        <Footer />
+      </DarkModeProvider>
     </div>
   );
 }
