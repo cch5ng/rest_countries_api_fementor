@@ -22,10 +22,6 @@ function App() {
   const [countries, setCountries] = useState([]);
   const {isDarkModeOn} = useDarkMode();
 
-  // const styleButtonClickHandler = (ev) => {
-  //   setIsDarkModeOn(!isDarkModeOn);
-  // }
-
   const searchInputChangeHandler = (value) => {
     setCountrySearchText(value);
   }
@@ -52,23 +48,19 @@ function App() {
     return filteredCountries;
   }
 
-  const getCountries = async () => {
+  const loadFromApi = async () => {
     let url = `https://restcountries.eu/rest/v2/all`;
-    try {
-      let response = await fetch(url);
-      return await response.json();
-    } catch(err) {
-      console.error(err);
-      // Handle errors here
+    const response = await fetch(url)
+    if (response.ok) {
+      let json = await response.json();
+      setCountries(json);
+    } else {
+      console.error('countries request failed')
     }
   }
 
   useEffect(() => {
-    let countriesData = getCountries();    
-    if (countriesData.length) {
-      console.log('countriesData', countriesData)
-      setCountries(countriesData);
-    }
+    loadFromApi();
   }, [])
 
   return (
