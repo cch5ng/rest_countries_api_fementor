@@ -48,7 +48,7 @@ function App() {
     return filteredCountries;
   }
 
-  const loadFromApi = async () => {
+  const loadFromApi = async (mounted) => {
     let url = `https://restcountries.eu/rest/v2/all`;
     const response = await fetch(url)
     if (response.ok) {
