@@ -23,8 +23,9 @@ afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
 
 test('renders footer text', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/project is available here/i);
+  //const { getByText } = 
+  render(<App />);
+  const linkElement = screen.getByText(/project is available here/i);
   expect(linkElement).toBeInTheDocument();
 });
 
@@ -58,8 +59,34 @@ test('handles style button click by rendering header with dark style', () => {
   expect(header.className).toMatch(/light_typography_primary/i);
 });
 
+//region filter
+test('filters countries list by region', async() => {
+  act(() => {
+    render(<App />);
 
-//content loads from api request
+    const regionFilterDefault = screen.getByText(/Filter by Region/i);
+    fireEvent.click(regionFilterDefault);
+    const regionAmericasItem = screen.getByText(/Americas/i);
+    fireEvent.click(regionAmericasItem);  
+  }) 
+
+  expect(await screen.findByText(/United States of America/i)).toBeInTheDocument();
+});
+
+//country name filter
+test('filters countries list by search string', async() => {
+  act(() => {
+    render(<App />);
+
+    const input = screen.getByPlaceholderText(/Search for a country/i);
+    fireEvent.change(input, { target: { value: 'Alb' } })
+  }) 
+
+  //expect(await screen.findByText(/United States of America/i)).not.toBeInTheDocument();
+  expect(await screen.findByText(/Albania/i)).toBeInTheDocument();
+});
+
+//loads api
 test('content loads from rest api', async() => {
   act(() => {
     render(<App />);
@@ -68,6 +95,3 @@ test('content loads from rest api', async() => {
   expect(await screen.findByText(/United States of America/i)).toBeInTheDocument();
 });
 
-//region filter
-
-//country name filter
