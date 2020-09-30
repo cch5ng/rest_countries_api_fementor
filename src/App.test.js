@@ -61,7 +61,9 @@ test('handles style button click by rendering header with dark style', () => {
 
 //content loads from api request
 test('content loads from rest api', async() => {
-  render(<App />);
+  act(() => {
+    render(<App />);
+  })
 
   expect(await screen.findByText(/United States of America/i)).toBeInTheDocument();
 });
