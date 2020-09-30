@@ -52,25 +52,24 @@ function App() {
     return filteredCountries;
   }
 
-  useEffect(() => {
+  const getCountries = async () => {
     let url = `https://restcountries.eu/rest/v2/all`;
-    fetch(url)
-      .then(resp => resp.json())
-      .then(json => {
-        if (json.length) {
-          setCountries(json);
-        }
-      })
-      .catch(err => console.error('error', err))
+    try {
+      let response = await fetch(url);
+      return await response.json();
+    } catch(err) {
+      console.error(err);
+      // Handle errors here
+    }
+  }
 
+  useEffect(() => {
+    let countriesData = getCountries();    
+    if (countriesData.length) {
+      console.log('countriesData', countriesData)
+      setCountries(countriesData);
+    }
   }, [])
-
-/*
-buttonClickHandler={ev => styleButtonClickHandler(ev)}
-            darkMode={isDarkModeOn} 
-darkMode={isDarkModeOn}
-darkMode={isDarkModeOn} 
-            */
 
   return (
     <div className={styles.App}>
