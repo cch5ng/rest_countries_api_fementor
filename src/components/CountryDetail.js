@@ -1,7 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {useParams, useHistory} from "react-router-dom";
+import classNames from 'classnames/bind';
 import Button from './Button';
 import {useDarkMode} from '../context/useDarkMode';
+import styles from './CountryDetail.module.scss';
+
+let cx = classNames.bind(styles);
 
 const CountryDetail = (props) => {
   let { name } = useParams();
@@ -9,6 +13,12 @@ const CountryDetail = (props) => {
   const [borderCountries, setBorderCountries] = useState([]);
   let history = useHistory();
   const {isDarkModeOn} = useDarkMode();
+
+  let detailSectionClassName = cx({
+    row: true,
+    body: true
+  });
+
 
   const handleBackButtonClick = (ev) => {
     history.goBack();
@@ -67,32 +77,36 @@ const CountryDetail = (props) => {
   }, [country])
 
   return (
-    <div>
+    <div className={styles.country_detail_container}>
       <Button label="Back"  id="btn_back" 
         buttonClickHandler={ev => handleBackButtonClick(ev)} />
-      <div><img alt="flag" src={country.flag} /></div>
-      <div>{name}</div>
-      <div>
+      <div className={styles.row}>
+        <div><img alt="flag" src={country.flag} className={styles.img_detail}/></div>
         <div>
-          <div>Native Name: {country.nativeName}</div>
-          <div>Population: {country.population}</div>
-          <div>Region: {country.region}</div>
-          <div>Sub Region: {country.subregion}</div>
-          <div>Capital: {country.capital}</div>
-        </div>
-        <div>
-          <div>Top Level Domain: {country.topLevelDomain}</div>
-          <div>Currencies: {getPrettyString(country.currencies)}</div>
-          <div>Languages: {getPrettyString(country.languages)}</div>
-        </div>
-      </div>
-      <div>
-        <div>Border Countries: </div>
-        <div>
-          {borderCountries.map(country => (
-            <Button label={country.name} id={country.name} key={country.name} 
-              buttonClickHandler={ev => handleCountryNavButtonClick(ev)} />
-          ))}
+          <div className={styles.subtitle}>{name}</div>
+          <div className={detailSectionClassName}>
+            <div className={styles.detail_section}>
+              <div className={styles.detail_description}><span className={styles.heading}>Native Name:</span> {country.nativeName}</div>
+              <div className={styles.detail_description}><span className={styles.heading}>Population:</span> {country.population}</div>
+              <div className={styles.detail_description}><span className={styles.heading}>Region:</span> {country.region}</div>
+              <div className={styles.detail_description}><span className={styles.heading}>Sub Region:</span> {country.subregion}</div>
+              <div className={styles.detail_description}><span className={styles.heading}>Capital:</span> {country.capital}</div>
+            </div>
+            <div className={styles.detail_section}>
+              <div className={styles.detail_description}><span className={styles.heading}>Top Level Domain:</span> {country.topLevelDomain}</div>
+              <div className={styles.detail_description}><span className={styles.heading}>Currencies:</span> {getPrettyString(country.currencies)}</div>
+              <div className={styles.detail_description}><span className={styles.heading}>Languages:</span> {getPrettyString(country.languages)}</div>
+            </div>
+          </div>
+          <div className={styles.row}>
+            <div className={styles.detail_important}>Border Countries: </div>
+            <div className={styles.row_global}>
+              {borderCountries.map(country => (
+                <Button label={country.name} id={country.name} key={country.name} 
+                  buttonClickHandler={ev => handleCountryNavButtonClick(ev)} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
