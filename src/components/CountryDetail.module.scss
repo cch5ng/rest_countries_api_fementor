@@ -1,0 +1,38 @@
+@import '../global.module.scss';
+
+.img_detail {
+  border-radius: 0;
+  margin: 60px 0;
+}
+
+.subtitle {
+  font-size: $subtitle_font_size_mobile;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.detail_section {
+  margin-bottom: 30px;
+}
+
+.detail_description {
+  margin: 10px 0;
+}
+
+.heading {
+  font-size: $detail_body;
+  font-weight: bold;
+}
+
+.body {
+  font-size: $detail_body;
+}
+
+.detail_important {
+  font-size: $detail_important;
+  margin-bottom: 20px;
+}
+
+.country_detail_container {
+
+}
