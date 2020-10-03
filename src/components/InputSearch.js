@@ -6,7 +6,6 @@ import {useDarkMode} from '../context/useDarkMode';
 
 let cx = classNames.bind(styles);
 
-//, darkMode
 const InputSearch = (props) => {
   const {placeholder, label, onChangeHandler, inputValue} = props;
   const {isDarkModeOn} = useDarkMode();
