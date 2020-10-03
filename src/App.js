@@ -11,12 +11,13 @@ import styles from './App.module.scss';
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
+import CountryDetail from './components/CountryDetail';
+import Home from './components/Home';
 import {DarkModeProvider, useDarkMode} from './context/useDarkMode';
 
 let cx = classNames.bind(styles);
 
 function App() {
-  //const [isDarkModeOn, setIsDarkModeOn] = useState(false);
   const [countrySearchText, setCountrySearchText] = useState('');
   const [selectedFilterRegion, setSelectedFilterRegion] = useState('');
   const [countries, setCountries] = useState([]);
@@ -68,7 +69,8 @@ function App() {
       <DarkModeProvider>
         <Router>
           <Header/>
-          <Main countries={countries} countrySearchText={countrySearchText} 
+          <Main 
+            countries={countries} countrySearchText={countrySearchText} 
             searchInputChangeHandler={searchInputChangeHandler} 
             filterSelectHandler={filterSelectHandler}
             getFilteredCountries={getFilteredCountries} 
