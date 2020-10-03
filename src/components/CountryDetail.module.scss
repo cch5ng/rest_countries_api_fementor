@@ -33,6 +33,20 @@
   margin-bottom: 20px;
 }
 
-.country_detail_container {
+
+@media (min-width: 768px) {  
+
+  // img {
+  //   min-height: 300px;
+  // }
+
+  .img_container {
+    width: 45%;
+    
+  }
+
+  .content_container {
+    width: 45%;
+  }
 
 }

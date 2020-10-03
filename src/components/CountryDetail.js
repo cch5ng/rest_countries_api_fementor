@@ -81,8 +81,8 @@ const CountryDetail = (props) => {
       <Button label="Back"  id="btn_back" 
         buttonClickHandler={ev => handleBackButtonClick(ev)} />
       <div className={styles.row}>
-        <div><img alt="flag" src={country.flag} className={styles.img_detail}/></div>
-        <div>
+        <div className={styles.img_container}><img alt="flag" src={country.flag} className={styles.img_detail}/></div>
+        <div className={styles.content_container}>
           <div className={styles.subtitle}>{name}</div>
           <div className={detailSectionClassName}>
             <div className={styles.detail_section}>
