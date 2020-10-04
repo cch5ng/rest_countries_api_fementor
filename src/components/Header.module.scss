@@ -22,6 +22,15 @@ header {
   font-size: 1.4em;
 }
 
+.header_box_shadow_light {
+  box-shadow: 0 0px 10px $color_box_shadow_light;
+}
+
+.header_box_shadow_dark {
+  box-shadow: 0 0px 10px $color_box_shadow_dark;
+}
+
+
 .style_btn_text {
   margin-left: 10px;
 }
