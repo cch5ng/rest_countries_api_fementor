@@ -16,6 +16,8 @@ const Button = (props) => {
     dark_typography_primary: isDarkModeOn,
     light_typography_placeholder: !isDarkModeOn,
     dark_typography_placeholder: isDarkModeOn,
+    btn_shadow_light: !isDarkModeOn,
+    btn_shadow_dark: isDarkModeOn,
     btn: true
   });
 
