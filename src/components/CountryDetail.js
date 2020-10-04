@@ -15,7 +15,7 @@ const CountryDetail = (props) => {
   const {isDarkModeOn} = useDarkMode();
 
   let detailSectionClassName = cx({
-    row: true,
+    row_top: true,
     body: true
   });
 
@@ -98,7 +98,7 @@ const CountryDetail = (props) => {
               <div className={styles.detail_description}><span className={styles.heading}>Languages:</span> {getPrettyString(country.languages)}</div>
             </div>
           </div>
-          <div className={styles.row}>
+          <div className={styles.row_global}>
             <div className={styles.detail_important}>Border Countries: </div>
             <div className={styles.row_global}>
               {borderCountries.map(country => (
