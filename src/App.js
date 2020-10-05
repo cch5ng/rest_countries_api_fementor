@@ -22,7 +22,7 @@ function App() {
   const [countrySearchText, setCountrySearchText] = useState('');
   const [selectedFilterRegion, setSelectedFilterRegion] = useState('');
   const [countries, setCountries] = useState([]);
-  const [alert, setAlert] = useState({status: 500, type: 'error', message: 'There was an error getting countries data. Please try again.'}); //{}
+  const [alert, setAlert] = useState({});
   const {isDarkModeOn} = useDarkMode();
 
   const searchInputChangeHandler = (value) => {
@@ -63,7 +63,6 @@ function App() {
     if (response.ok) {
       let json = await response.json();
       setCountries(json);
-      //setAlert({});
     } else {
       if (response.status.toString().startsWith('5')) {
         setAlert({
