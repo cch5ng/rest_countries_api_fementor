@@ -4,10 +4,6 @@ import FilterControl from './FilterControl';
 import CountryCard from './CountryCard';
 import styles from './Home.module.scss';
 
-//darkMode, 
-//darkMode={darkMode} 
-//darkMode={darkMode}
-
 const Home = (props) => {
   const {filterSelectHandler, countrySearchText, searchInputChangeHandler,
     countries, curRegion} = props;

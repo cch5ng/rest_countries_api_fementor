@@ -13,6 +13,7 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import CountryDetail from './components/CountryDetail';
 import Home from './components/Home';
+import Alert from './components/Alert';
 import {DarkModeProvider, useDarkMode} from './context/useDarkMode';
 
 let cx = classNames.bind(styles);
@@ -21,6 +22,7 @@ function App() {
   const [countrySearchText, setCountrySearchText] = useState('');
   const [selectedFilterRegion, setSelectedFilterRegion] = useState('');
   const [countries, setCountries] = useState([]);
+  const [alert, setAlert] = useState({});
   const {isDarkModeOn} = useDarkMode();
 
   const searchInputChangeHandler = (value) => {
@@ -49,14 +51,28 @@ function App() {
     return filteredCountries;
   }
 
+  //clears the alert, hides the component
+  const alertClickHandler = () => {
+    setAlert({});
+  }
+
   const loadFromApi = async (mounted) => {
     let url = `https://restcountries.eu/rest/v2/all`;
     const response = await fetch(url)
+    console.log('response', response)
     if (response.ok) {
       let json = await response.json();
       setCountries(json);
     } else {
-      console.error('countries request failed')
+      if (response.status.toString().startsWith('5')) {
+        setAlert({
+          status: response.status,
+          type: 'error',
+          message: 'There was an error getting countries. Please try again in a few moments.'
+        })
+      } else {
+        console.error(`Error status code ${response.status}. The countries request failed.`);
+      }
     }
   }
 
@@ -69,6 +85,9 @@ function App() {
       <DarkModeProvider>
         <Router>
           <Header/>
+          {Object.keys(alert).length > 0 && (
+            <Alert message={alert.message} type={alert.type} onClickHandler={alertClickHandler} />
+          )}
           <Main 
             countries={countries} countrySearchText={countrySearchText} 
             searchInputChangeHandler={searchInputChangeHandler} 
