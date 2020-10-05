@@ -2,9 +2,9 @@
 
 .alert {
   position: absolute;
-  width: calc(60vw);
+  width: 90%;
   top: $header_height + 50px;
-  left: calc(100vw / 2 - 60vw / 2);
+  left: 5%;
   border-radius: 5px;
   z-index: 100;
   padding: 8px 12px;
@@ -36,4 +36,14 @@
 
 .alert_message_success {
   color: $color_alert_success_message_typography;
+}
+
+@media (min-width: 768px) {
+
+  .alert {
+    width: calc(60vw);
+    top: $header_height_desktop + 20px;
+    left: calc(100vw / 2 - 60vw / 2);  
+  }
+
 }
