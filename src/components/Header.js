@@ -22,8 +22,10 @@ const Header = (props) => {
   let headerClassName = cx({
     light_background_primary: !isDarkModeOn,
     light_typography_primary: !isDarkModeOn,
+    header_box_shadow_light: !isDarkModeOn,
     dark_background_primary: isDarkModeOn,
-    dark_typography_primary: isDarkModeOn
+    dark_typography_primary: isDarkModeOn,
+    header_box_shadow_dark: isDarkModeOn
   });
 
   let linkClassName = cx({

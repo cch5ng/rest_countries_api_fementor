@@ -1,0 +1,16 @@
+@import '../global.module.scss';
+
+.btn {
+  min-width: 100px;
+  height: 30px;
+  border: none;
+  margin: 0 5px 10px 0;
+}
+
+.btn_shadow_dark {
+  box-shadow: 0 0 8px $color_box_shadow_dark;
+}
+
+.btn_shadow_light {
+  box-shadow: 0 0 8px $color_box_shadow_light;
+}

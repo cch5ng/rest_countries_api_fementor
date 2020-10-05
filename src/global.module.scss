@@ -6,7 +6,9 @@ $color_primary_background_light: #fff;
 $color_secondary_background_light: #e8e8e8;
 $color_primary_typography_light: #000;
 $color_secondary_typography_light: #e8e8e8;
+$color_tertiary_typography_light: #7f7f7f;
 $color_link_typography_light: #000;
+$color_box_shadow_light: #b2b2b2;
 
 /* colors dark */
 $color_primary_background_dark: #46454B;
@@ -14,11 +16,16 @@ $color_secondary_background_dark: #323138;
 $color_primary_typography_dark: #fff;
 $color_secondary_typography_dark: #fff;
 $color_link_typography_dark: #fff;
+$color_box_shadow_dark: #232227;
 
 /* global typography */
 $title_font_size_mobile: 1.6rem;
 $title_font_size_tablet: 1.3rem;
 $title_font_size_desktop: 1.0rem;
+
+$subtitle_font_size_mobile: 1.3rem;
+$detail_body: 0.9rem;
+$detail_important: 1.0rem;
 
 $control_typography_size: 1.0rem;
 
@@ -59,6 +66,10 @@ $filter_top_desktop: 100px;
   color: $color_link_typography_light;
 }
 
+.light_button_typography {
+  color: $color_tertiary_typography_light;
+}
+
 .light_icon {
   color: #666;
 }
@@ -97,4 +108,29 @@ $filter_top_desktop: 100px;
 
 .link {
   text-decoration: none;
+}
+
+.row_global {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+
+  .row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .row_top {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
 }
