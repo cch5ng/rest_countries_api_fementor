@@ -22,7 +22,7 @@ function App() {
   const [countrySearchText, setCountrySearchText] = useState('');
   const [selectedFilterRegion, setSelectedFilterRegion] = useState('');
   const [countries, setCountries] = useState([]);
-  const [alert, setAlert] = useState({status: 500, type: 'success', message: 'There was an error getting countries data. Please try again.'}); //{}
+  const [alert, setAlert] = useState({status: 500, type: 'error', message: 'There was an error getting countries data. Please try again.'}); //{}
   const {isDarkModeOn} = useDarkMode();
 
   const searchInputChangeHandler = (value) => {
@@ -49,6 +49,11 @@ function App() {
       })
     }
     return filteredCountries;
+  }
+
+  //clears the alert, hides the component
+  const alertClickHandler = () => {
+    setAlert({});
   }
 
   const loadFromApi = async (mounted) => {
@@ -82,7 +87,7 @@ function App() {
         <Router>
           <Header/>
           {Object.keys(alert).length > 0 && (
-            <Alert message={alert.message} type={alert.type} />
+            <Alert message={alert.message} type={alert.type} onClickHandler={alertClickHandler} />
           )}
           <Main 
             countries={countries} countrySearchText={countrySearchText} 

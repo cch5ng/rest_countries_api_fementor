@@ -6,7 +6,7 @@ import {useDarkMode} from '../context/useDarkMode';
 let cx = classNames.bind(styles);
 
 const Alert = (props) => {
-  const {type, message} = props;
+  const {type, message, onClickHandler} = props;
   const {isDarkModeOn} = useDarkMode();
   const isAlertError = type === 'error';
 
@@ -28,7 +28,7 @@ const Alert = (props) => {
   });
 
   return (
-    <div className={alertClassName}>
+    <div className={alertClassName} onClick={onClickHandler}>
       {type === 'error' && (
         <p className={titleClassName}>Error</p>
       )}
