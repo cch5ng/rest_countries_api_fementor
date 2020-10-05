@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames/bind';
+import { AiFillCloseCircle, AiOutlineClose } from "react-icons/ai";
 import styles from './Alert.module.scss';
 import {useDarkMode} from '../context/useDarkMode';
 
@@ -13,7 +14,9 @@ const Alert = (props) => {
   let alertClassName = cx({
     alert_error: isAlertError,
     alert_success: !isAlertError,
-    alert: true
+    alert: true,
+    row_global_top: true,
+    alert_container: true
   });
 
   let titleClassName = cx({
@@ -27,15 +30,31 @@ const Alert = (props) => {
     alert_message_success: !isAlertError
   });
 
+  let iconLeftClassName = cx({
+    icon_error: isAlertError,
+    icon_success: !isAlertError,
+    icon_left: true
+  })
+
+  let iconRightClassName = cx({
+    icon_error: isAlertError,
+    icon_success: !isAlertError,
+    icon_right: true
+  })
+
   return (
     <div className={alertClassName} onClick={onClickHandler}>
-      {type === 'error' && (
-        <p className={titleClassName}>Error</p>
-      )}
-      {type !== 'error' && (
-        <p className={titleClassName}>Sucess</p>
-      )}
-      <p className={messageClassName}>{message}</p>
+      <div className={iconLeftClassName}><AiFillCloseCircle /></div>
+      <div className={styles.alert_content}>
+        {type === 'error' && (
+          <p className={titleClassName}>Error</p>
+        )}
+        {type !== 'error' && (
+          <p className={titleClassName}>Sucess</p>
+        )}
+        <p className={messageClassName}>{message}</p>
+      </div>
+      <div className={iconRightClassName}><AiOutlineClose /></div>
     </div>
   )
 }

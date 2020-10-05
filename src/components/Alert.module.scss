@@ -1,5 +1,9 @@
 @import '../global.module.scss';
 
+.alert_container {
+  justify-content: space-between;
+}
+
 .alert {
   position: absolute;
   width: 90%;
@@ -38,6 +42,45 @@
   color: $color_alert_success_message_typography;
 }
 
+p {
+  margin-block-start: 0;
+}
+
+.icon_left {
+  margin-right: 12px;
+}
+
+.icon_right {
+}
+
+.alert_content {
+}
+
+.icon_error {
+  color: $color_alert_error_icon_background;
+  font-size: 1.1rem;
+}
+
+.icon_success {
+  color: $color_alert_success_icon_background;
+  font-size: 1.1rem;
+}
+
+@media (min-width: 580px) {
+  .icon_left {
+    flex-grow: 1;
+  }
+  
+  .icon_right {
+    flex-grow: 1;
+  }
+  
+  .alert_content {
+    flex-grow: 1;
+  }
+  
+}
+
 @media (min-width: 768px) {
 
   .alert {
@@ -45,5 +88,9 @@
     top: $header_height_desktop + 20px;
     left: calc(100vw / 2 - 60vw / 2);  
   }
+
+  .alert_content {
+    flex-grow: 10;
+  }  
 
 }
