@@ -25,7 +25,8 @@ const Header = (props) => {
     header_box_shadow_light: !isDarkModeOn,
     dark_background_primary: isDarkModeOn,
     dark_typography_primary: isDarkModeOn,
-    header_box_shadow_dark: isDarkModeOn
+    header_box_shadow_dark: isDarkModeOn,
+    header: true
   });
 
   let linkClassName = cx({

@@ -2,4 +2,13 @@
 
 .main {
   padding: 30px;
+  flex: 1 calc(100vh - 100px - 150px); //unsure why I couldn't use global vars here
+}
+
+@media (min-width: 768px) {
+
+  .main {
+    flex: 1 calc(100vh - 100px - 70px);
+  }
+
 }
