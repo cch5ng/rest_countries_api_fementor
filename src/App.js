@@ -25,6 +25,11 @@ function App() {
   const [alert, setAlert] = useState({});
   const {isDarkModeOn} = useDarkMode();
 
+  // const appClassName = cx({
+  //   light_background_secondary: !isDarkModeOn,
+  //   dark_background_secondary: isDarkModeOn
+  // })
+
   const searchInputChangeHandler = (value) => {
     setCountrySearchText(value);
   }
@@ -59,7 +64,6 @@ function App() {
   const loadFromApi = async (mounted) => {
     let url = `https://restcountries.eu/rest/v2/all`;
     const response = await fetch(url)
-    console.log('response', response)
     if (response.ok) {
       let json = await response.json();
       setCountries(json);
@@ -80,25 +84,26 @@ function App() {
     loadFromApi();
   }, [])
 
+  
   return (
-    <div className={styles.App}>
-      <DarkModeProvider>
-        <Router>
+    <DarkModeProvider>
+      <Router>
+        <div className={styles.app_container}>
           <Header/>
           {Object.keys(alert).length > 0 && (
             <Alert message={alert.message} type={alert.type} onClickHandler={alertClickHandler} />
           )}
           <Main 
-            countries={countries} countrySearchText={countrySearchText} 
-            searchInputChangeHandler={searchInputChangeHandler} 
-            filterSelectHandler={filterSelectHandler}
-            getFilteredCountries={getFilteredCountries} 
-            selectedFilterRegion={selectedFilterRegion}
+              countries={countries} countrySearchText={countrySearchText} 
+              searchInputChangeHandler={searchInputChangeHandler} 
+              filterSelectHandler={filterSelectHandler}
+              getFilteredCountries={getFilteredCountries} 
+              selectedFilterRegion={selectedFilterRegion}
           />
-        </Router>
-        <Footer />
-      </DarkModeProvider>
-    </div>
+          <Footer />
+        </div>
+      </Router>
+    </DarkModeProvider>
   );
 }
 

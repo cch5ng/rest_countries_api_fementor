@@ -7,7 +7,7 @@
 
 .subtitle {
   font-size: $subtitle_font_size_mobile;
-  font-weight: bold;
+  font-weight: 800;
   margin-bottom: 20px;
 }
 
@@ -21,7 +21,7 @@
 
 .heading {
   font-size: $detail_body;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .body {
@@ -36,13 +36,8 @@
 
 @media (min-width: 768px) {  
 
-  // img {
-  //   min-height: 300px;
-  // }
-
   .img_container {
     width: 48%;
-    
   }
 
   .img_detail {

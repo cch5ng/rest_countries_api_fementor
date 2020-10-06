@@ -25,10 +25,14 @@ img {
   padding: 30px;
 }
 
-.title, 
+.title {
+  font-size: $title_font_size_mobile;
+  font-weight: 800;
+}
+
 .detail_heading {
   font-size: $title_font_size_mobile;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .detail_text {
