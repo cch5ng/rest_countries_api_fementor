@@ -1,3 +1,12 @@
+/* styleguide colors */
+$dark_blue: hsl(209, 23%, 22%);  //(Dark Mode Elements)
+$dark_blue2: hsl(207, 26%, 17%); //(Dark Mode Background)
+$dark_blue3: hsl(200, 15%, 8%); //(Light Mode Text)
+$dark_gray: hsl(0, 0%, 52%); //(Light Mode Input)
+$light_gray0: #e8e8e8;; //(Light Mode Background)
+$light_grey0: #e8e8e8;;
+$white: hsl(0, 0%, 100%); //(Dark Mode Text & Light Mode Elements)
+
 /* global colors */
 $color_alert_error_background: #fdebea;
 $color_alert_error_title_typography: #77201a;
@@ -9,20 +18,11 @@ $color_alert_success_message_typography: #629935;
 $color_alert_success_icon_background: #7bc043;
 
 /* colors light */
-$color_primary_background_light: #fff;
-$color_secondary_background_light: #e8e8e8;
-$color_primary_typography_light: #000;
-$color_secondary_typography_light: #e8e8e8;
 $color_tertiary_typography_light: #7f7f7f;
-$color_link_typography_light: #000;
 $color_box_shadow_light: #b2b2b2;
 
 /* colors dark */
-$color_primary_background_dark: #46454B;
-$color_secondary_background_dark: #323138;
-$color_primary_typography_dark: #fff;
 $color_secondary_typography_dark: #fff;
-$color_link_typography_dark: #fff;
 $color_box_shadow_dark: #232227;
 
 /* global typography */
@@ -50,6 +50,8 @@ $filter_top: 240px;
 $header_height_desktop: 70px;
 $filter_top_desktop: 100px;
 
+$footer_height: 100px;
+
 /* global link */
 
 
@@ -58,19 +60,19 @@ $filter_top_desktop: 100px;
 }
 
 .light_background_primary {
-  background-color: $color_primary_background_light;
+  background-color: $white;
 }
 
 .light_background_secondary {
-  background-color: $color_secondary_background_light;
+  background-color: $light_gray0;
 }
 
 .light_typography_primary {
-  color: $color_primary_typography_light;
+  color: $dark_blue3;
 }
 
 .light_link_typography {
-  color: $color_link_typography_light;
+  color: $dark_blue3;
 }
 
 .light_button_typography {
@@ -88,30 +90,28 @@ $filter_top_desktop: 100px;
 
 
 .dark_background_primary {
-  background-color: $color_primary_background_dark;
+  background-color: $dark_blue;
 }
 
 .dark_background_secondary {
-  background-color: $color_secondary_background_dark;
+  background-color: $dark_blue2;
 }
 
 .dark_typography_primary {
-  color: $color_primary_typography_dark;
+  color: $white;
 }
 
 .dark_link_typography {
-  color: $color_link_typography_dark;
+  color: $white;
 }
 
 .dark_icon {
-  color: $color_primary_typography_dark;
+  color: $white;
 }
 
 .dark_typography_placeholder::placeholder {
-  color: $color_primary_typography_dark;
+  color: $white;
 }
-
-
 
 .link {
   text-decoration: none;
