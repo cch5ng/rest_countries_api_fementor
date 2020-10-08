@@ -19,19 +19,19 @@ img {
 }
 
 .card_detail_container {
-  height: 47vw;
+  min-height: 47vw;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
   padding: 30px;
 }
 
 .title {
-  font-size: $title_font_size_mobile;
+  font-size: $title_font_size_tablet;
   font-weight: 800;
 }
 
 .detail_heading {
-  font-size: $title_font_size_mobile;
+  font-size: $title_font_size_tablet;
   font-weight: 600;
 }
 
@@ -40,7 +40,7 @@ img {
 }
 
 .detail_description {
-  font-size: $title_font_size_mobile;
+  font-size: $title_font_size_tablet;
 }
 
 @media (min-width: 768px) {
@@ -54,7 +54,7 @@ img {
   }
 
   .card_detail_container {
-    height: 30vw;
+    min-height: 30vw;
   }
   
   .title,
@@ -86,7 +86,7 @@ img {
   }
 
   .card_detail_container {
-    height: 18vw;
+    min-height: 18vw;
   }
   
   .title,
@@ -109,7 +109,7 @@ img {
   }
 
   .card_detail_container {
-    height: 15vw;
+    min-height: 15vw;
   }
   
 }
